@@ -4,7 +4,7 @@
     ./locale.nix
     ./user.nix
   ];
-  system.stateVersion = "25.05";
+  # system.stateVersion = "25.05";
   # Boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;

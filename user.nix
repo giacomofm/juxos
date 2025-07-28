@@ -3,7 +3,6 @@
     uid = 1000;
     isNormalUser = true;
     description = "Juk";
-    initialPassword = "juk";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
       jetbrains-toolbox

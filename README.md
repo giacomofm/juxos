@@ -6,6 +6,8 @@
 
 ## Installazione
 
+`sudo su`
+
 ### Partitioning
 ```
 lsblk # Per controllare i dischi
@@ -30,12 +32,13 @@ mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
 
 `nixos-generate-config --root /mnt` per creare la base  
+`cd /mnt/etc/nixos`  
 clona `git clone https://github.com/giacomofm/juxos.git` (•̀ᴗ•́)و  
 edita `/mnt/etc/nixos/configuration.nix`  
 
 `nixos-install`
 
-(Not Needed) Alla fine password per l'utente:
+Alla fine password per l'utente:  
 `nixos-enter --root /mnt -c 'passwd juk'`
 
 `reboot`

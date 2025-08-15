@@ -33,12 +33,12 @@
     ];
   };
   environment.systemPackages = with pkgs; [
+    gnome-system-monitor
     ghostty
-    git
-    vlc
     sublime4
     nautilus
-    gnome-system-monitor
+    git
+    vlc
     input-remapper
     hydrapaper
   ];

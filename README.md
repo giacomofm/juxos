@@ -52,7 +52,7 @@ Per aggiungere i permessi di scrittura:
 
 [Upgrading NixOS](https://nixos.org/manual/nixos/stable/#sec-upgrading)
 
-`nixos-rebuild switch --upgrade`
+`sudo nixos-rebuild switch --upgrade`
 
 ## Cleaning
 

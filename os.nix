@@ -3,6 +3,7 @@
     ./nvidia.nix
     ./locale.nix
     ./user.nix
+    ./nordvpn.nix
   ];
   # system.stateVersion = "25.05";
   # Boot

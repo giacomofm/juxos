@@ -11,17 +11,17 @@
 ### Partitioning
 ```
 lsblk # Per controllare i dischi
-parted /dev/sda -- mklabel gpt
-parted /dev/sda -- mkpart root ext4 512MB -8GB
-parted /dev/sda -- mkpart swap linux-swap -8GB 100%
-parted /dev/sda -- mkpart ESP fat32 1MB 512MB
-parted /dev/sda -- set 3 esp on
+parted /dev/sdX -- mklabel gpt
+parted /dev/sdX -- mkpart root ext4 512MB -8GB
+parted /dev/sdX -- mkpart swap linux-swap -8GB 100%
+parted /dev/sdX -- mkpart ESP fat32 1MB 512MB
+parted /dev/sdX -- set 3 esp on
 ```
 ### Formatting
 ```
-mkfs.ext4 -L nixos /dev/sda1
-mkswap -L swap /dev/sda2
-mkfs.fat -F 32 -n boot /dev/sda3
+mkfs.ext4 -L nixos /dev/sdX1
+mkswap -L swap /dev/sdX2
+mkfs.fat -F 32 -n boot /dev/sdX3
 ```
 ### Installing
 ```
@@ -34,7 +34,7 @@ mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 `nixos-generate-config --root /mnt` per creare la base  
 `cd /mnt/etc/nixos`  
 clona `git clone https://github.com/giacomofm/juxos.git` (•̀ᴗ•́)و  
-edita `/mnt/etc/nixos/configuration.nix`  
+edita `/mnt/etc/nixos/configuration.nix` (negli import: `./juxos/os.nix`)  
 
 `nixos-install`
 
@@ -43,6 +43,10 @@ Alla fine password per l'utente:
 
 `reboot`
 
+## Edit
+
+Per aggiungere i permessi di scrittura:  
+`sudo setfacl -R -m u:juk:rwx /etc/nixos/juxos`
 
 ## Upgrading
 

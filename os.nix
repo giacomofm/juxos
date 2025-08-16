@@ -39,6 +39,7 @@
     nautilus
     git
     vlc
+    ffmpeg
     input-remapper
     hydrapaper
   ];

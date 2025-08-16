@@ -42,5 +42,11 @@
     ffmpeg
     input-remapper
     hydrapaper
+    # https://wiki.nixos.org/wiki/Thumbnails
+    ffmpegthumbnailer
+    gdk-pixbuf
+  ];
+  environment.pathsToLink = [
+    "share/thumbnailers"
   ];
 }

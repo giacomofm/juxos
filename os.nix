@@ -36,6 +36,7 @@
   environment.systemPackages = with pkgs; [
     gnome-system-monitor
     ghostty
+    gparted
     sublime4
     nautilus
     git

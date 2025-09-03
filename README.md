@@ -9,7 +9,7 @@
 `sudo su`
 
 ### Partitioning
-```
+```console
 lsblk # Per controllare i dischi
 parted /dev/sdX -- mklabel gpt
 parted /dev/sdX -- mkpart root ext4 512MB -8GB
@@ -18,13 +18,13 @@ parted /dev/sdX -- mkpart ESP fat32 1MB 512MB
 parted /dev/sdX -- set 3 esp on
 ```
 ### Formatting
-```
+```console
 mkfs.ext4 -L nixos /dev/sdX1
 mkswap -L swap /dev/sdX2
 mkfs.fat -F 32 -n boot /dev/sdX3
 ```
 ### Installing
-```
+```console
 mount /dev/disk/by-label/nixos /mnt
 # (for UEFI)
 mkdir -p /mnt/boot
@@ -52,9 +52,18 @@ Per aggiungere i permessi di scrittura:
 
 [Upgrading NixOS](https://nixos.org/manual/nixos/stable/#sec-upgrading)
 
-`sudo nixos-rebuild switch --upgrade`
+```console
+sudo nixos-rebuild switch --upgrade
+```
 
 ## Cleaning
 
 `nixos-rebuild list-generations`  
 `sudo nix-collect-garbage -d`
+
+## Git Utils
+
+```console
+cd /etc/nixos/juxos
+git add . && git commit -m "[ma message]" && git push
+```

@@ -51,4 +51,7 @@
   environment.pathsToLink = [
     "share/thumbnailers"
   ];
+  networking.extraHosts = ''
+    127.0.0.1 sublimetext.com # disable sublime update check
+  '';
 }

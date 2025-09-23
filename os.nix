@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./locale.nix
-    ./disks.nix
+    ./shares.nix
     ./nordvpn.nix
     ./desktop/os.nix
   ];
@@ -21,12 +21,7 @@
   environment.systemPackages = with pkgs; [
     gparted
     git
+    vlc
     ffmpeg
   ];
-  # FTP
-  services.vsftpd = {
-    enable = true;
-    localUsers = true;
-    writeEnable = true;
-  };
 }

@@ -1,5 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
+    ./disks.nix
     ./nvidia.nix
     ./user.nix
   ];
@@ -17,8 +18,13 @@
     alsa.enable = true;
     alsa.support32Bit = true;
   };
-  # Config
-  networking.hostName = "desknix";
+  # Network
+  networking = {
+    hostName = "desknix";
+    extraHosts = ''
+      127.0.0.1 sublimetext.com # disable sublime update check
+    '';
+  };
   # App
   programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
@@ -26,7 +32,6 @@
     ghostty
     sublime4
     nautilus
-    vlc
     input-remapper
     hydrapaper
     # https://wiki.nixos.org/wiki/Thumbnails
@@ -36,7 +41,4 @@
   environment.pathsToLink = [
     "share/thumbnailers"
   ];
-  networking.extraHosts = ''
-    127.0.0.1 sublimetext.com # disable sublime update check
-  '';
 }

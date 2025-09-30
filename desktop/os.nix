@@ -5,7 +5,16 @@
     ./user.nix
   ];
   # Desktop
-  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm = {
+    enable = true;
+    autoSuspend = false;
+  };
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
   services.xserver.desktopManager.gnome.enable = true;
   services.gnome.core-apps.enable = false;
   environment.gnome.excludePackages = [ pkgs.gnome-tour ];
@@ -22,7 +31,8 @@
   networking = {
     hostName = "desknix";
     extraHosts = ''
-      127.0.0.1 sublimetext.com # disable sublime update check
+      127.0.0.1 www.sublimetext.com
+      127.0.0.1 sublimetext.com
     '';
   };
   # App

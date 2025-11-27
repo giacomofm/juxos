@@ -5,19 +5,21 @@
     ./user.nix
   ];
   # Desktop
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    autoSuspend = false;
+  services = {
+    desktopManager.gnome.enable = true;
+    displayManager.gdm = {
+      enable = true;
+      autoSuspend = false;
+    };
   };
+  services.gnome.core-apps.enable = false;
+  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
   systemd.sleep.extraConfig = ''
     AllowSuspend=no
     AllowHibernation=no
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
-  services.xserver.desktopManager.gnome.enable = true;
-  services.gnome.core-apps.enable = false;
-  environment.gnome.excludePackages = [ pkgs.gnome-tour ];
   # PipeWire
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -42,10 +44,10 @@
     ghostty
     sublime4
     nautilus
+    loupe
     input-remapper
     hydrapaper
-    # https://wiki.nixos.org/wiki/Thumbnails
-    ffmpegthumbnailer
+    ffmpegthumbnailer # https://wiki.nixos.org/wiki/Thumbnails
     gdk-pixbuf
   ];
   environment.pathsToLink = [

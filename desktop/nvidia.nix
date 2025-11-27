@@ -1,9 +1,9 @@
 { config, pkgs, ... }: {
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
+  hardware.graphics.enable = true;
   hardware.nvidia = {
-    modesetting.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
 
     # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
     nvidiaSettings = true;
